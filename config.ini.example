@@ -1,0 +1,9 @@
+[global]
+DEBUG=3
+UI=ui/
+BASEURL=http://localhost:8000
+
+[database]
+DB_DSN=mysql:host=localhost;port=3306;dbname=f3_project
+DB_USER=root
+DB_PASS=

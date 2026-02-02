@@ -1,1 +1,7 @@
 fatfree-core-master/
+vendor/
+composer.lock
+*.log
+.DS_Store
+Thumbs.db
+config.ini

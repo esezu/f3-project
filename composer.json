@@ -1,0 +1,16 @@
+{
+    "name": "esezu/f3-project",
+    "description": "F3 Framework Test Project",
+    "type": "project",
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
