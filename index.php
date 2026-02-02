@@ -1,6 +1,8 @@
 <?php
 require_once __DIR__ . '/../fatfree-core-master/base.php';
-$f3 = Base::instance();
+$f3 = \Base::instance();
+
+$f3->set('DEBUG', 3);
 
 $f3->route('GET /',
     function() {
@@ -25,7 +27,5 @@ $f3->route('GET /hello/@name',
         echo 'Hello, ' . $params['name'] . '!';
     }
 );
-
-$f3->error(404, '页面不存在');
 
 $f3->run();
