@@ -1,7 +1,5 @@
 <?php
-
 require_once __DIR__ . '/../fatfree-core-master/base.php';
-
 $f3 = Base::instance();
 
 $f3->route('GET /',
@@ -29,3 +27,5 @@ $f3->route('GET /hello/@name',
 );
 
 $f3->error(404, '页面不存在');
+
+$f3->run();
