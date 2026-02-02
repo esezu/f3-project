@@ -3,6 +3,8 @@ require_once __DIR__ . '/../fatfree-core-master/base.php';
 $f3 = \Base::instance();
 
 $f3->set('DEBUG', 3);
+$f3->set('AUTOLOAD', 'app/');
+$f3->set('UI', 'ui/');
 
 $f3->route('GET /',
     function() {
