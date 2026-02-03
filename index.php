@@ -2,32 +2,22 @@
 require_once __DIR__ . '/../fatfree-core-master/base.php';
 $f3 = \Base::instance();
 
-$f3->set('AUTOLOAD', 'app/');
-$f3->set('UI', 'ui/');
+
+$f3->set('AUTOLOAD','apps/');
+$f3->set('UI', 'ui/; apps/');
 $f3->set('DEBUG', 3);
 
-$f3->route('GET /',
-    function() {
-        echo 'Hello, world!';
-    }
-);
+// 管理员路由
+$f3->route('GET /admins', 'admins\controller\HomeController->index');
+$f3->route('GET /admins/test', 'admins\controller\HomeController->test');
+$f3->route('GET /admins/@name', 'admins\controller\HomeController->index');
+// 测试登录
+$f3->route('GET /admins/login', 'admins\controller\HomeController->login');
+// 测试退出
+$f3->route('GET /admins/logout', 'admins\controller\HomeController->logout');
 
-$f3->route('GET /test',
-    function() use ($f3) {
-        echo '<h1>F3框架测试页面</h1>';
-        echo '<p>框架版本: ' . $f3->VERSION . '</p>';
-        echo '<p>当前时间: ' . date('Y-m-d H:i:s') . '</p>';
-        echo '<p>请求方法: ' . $f3->VERB . '</p>';
-        echo '<p>请求URI: ' . $f3->URI . '</p>';
-        echo '<hr>';
-        echo '<a href="/">返回首页</a>';
-    }
-);
-
-$f3->route('GET /hello/@name',
-    function($f3, $params) {
-        echo 'Hello, ' . $params['name'] . '!';
-    }
-);
+// 用户路由
+$f3->route('GET /users', 'users\controller\HomeController->index');
+$f3->route('GET /users/@name', 'users\controller\HomeController->index');
 
 $f3->run();
