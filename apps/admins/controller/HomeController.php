@@ -20,15 +20,40 @@ class HomeController extends BaseController {
         // 把测试页面渲染到布局中
         echo $this->template->render('admins/view/home/index.htm');
     }
+
     // 测试登录
     public function login($f3, $params) {
+		// 清除会话数据
+		$f3->clear('SESSION');
+		// 设置 cookie 已发送标记
+		$f3->set('COOKIE.sent',TRUE);
 
-        echo $this->template->render('admins/view/login.htm');
+		// 设置登录页面模板
+		// $f3->set('inc','login.htm');
+        echo $this->template->render('admins/view/home/login.htm');
 
     }
-    // 测试退出
-    public function logout($f3, $params) {
-        $this->f3->set('SESSION.admin_logged_in', false);
-        $this->f3->reroute('/admins/login');
+
+    // 处理登录表单
+    public function auth($f3, $params) {
+        // 简化验证：用户名和密码都为 admin
+        if ($f3->get('POST.user_id') === 'admin' && $f3->get('POST.password') === 'admin') {
+            $f3->clear('COOKIE.sent');
+            $f3->clear('SESSION.captcha');
+            $f3->set('SESSION.admin_id', 'admin');
+            $f3->set('SESSION.lastseen', time());
+            $f3->reroute('/admins');
+        } else {
+            $f3->set('message', '用户名或密码错误');
+            $this->login($f3, $params);
+        }
+    }
+
+    // 终止会话
+    public function logout($f3, $params) {  
+        // 清除会话数据
+        $f3->clear('SESSION');
+        // 重定向到登录页面
+        $f3->reroute('/admins/login');
     }
 }
