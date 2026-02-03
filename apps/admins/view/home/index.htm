@@ -1,0 +1,10 @@
+<!-- 接收test测试信息 并在页面中显示 -->
+ <h1>{{ @page_title }}</h1>
+ <p>框架版本: {{ @f3_version }}</p>
+ <p>当前时间: {{ @current_time }}</p>
+ <p>请求方法: {{ @request_method }}</p>
+ <p>请求URI: {{ @request_uri }}</p>
+ <hr>
+ <a href="/">返回首页</a>
+
+<include href="{{ @content }}" />
