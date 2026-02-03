@@ -3,7 +3,15 @@ DEBUG=3
 UI=ui/
 BASEURL=http://localhost:8000
 
+; 登录配置
+user_id=user
+admin_id=admin
+; 密码: crypt('admin')
+password="$1$o94.Rc0.$2GSt4JJsPx63u9UVpl0r//"
+; 会话过期时间（小时）
+expiry=24
+
 [database]
 DB_DSN=mysql:host=localhost;port=3306;dbname=f3_project
 DB_USER=root
-DB_PASS=
+DB_PASS=123456
