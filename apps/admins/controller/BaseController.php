@@ -25,9 +25,9 @@ class BaseController
             return;
         }
         
-        // 暂时硬编码配置值
-        $admin_id = 'admin';
-        $expiry = 24;
+        // 从配置文件获取值
+        $admin_id = $f3->get('admin_id');
+        $expiry = $f3->get('expiry');
         
         // 验证会话有效性：检查用户 ID
         if (!$f3->get('SESSION.admin_id') || $f3->get('SESSION.admin_id') != $admin_id) {

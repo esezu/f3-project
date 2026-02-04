@@ -1,4 +1,4 @@
-[global]
+[globals]
 DEBUG=3
 UI=ui/
 BASEURL=http://localhost:8000
@@ -10,6 +10,10 @@ admin_id=admin
 password="$1$o94.Rc0.$2GSt4JJsPx63u9UVpl0r//"
 ; 会话过期时间（小时）
 expiry=24
+
+; SQLite 数据源名称
+db="sqlite:./data/dashang.db"
+
 
 [database]
 DB_DSN=mysql:host=localhost;port=3306;dbname=f3_project

@@ -36,11 +36,16 @@ class HomeController extends BaseController {
 
     // 处理登录表单
     public function auth($f3, $params) {
-        // 简化验证：用户名和密码都为 admin
-        if ($f3->get('POST.user_id') === 'admin' && $f3->get('POST.password') === 'admin') {
+        // 从配置文件获取登录凭证
+        $admin_id = $f3->get('admin_id');
+        $password_hash = $f3->get('password');
+        
+        
+        // 验证用户名和密码
+        // 使用 PHP 内置的 password_verify 函数来验证密码
+        if ($f3->get('POST.user_id') === $admin_id && password_verify($f3->get('POST.password'), $password_hash)) {
             $f3->clear('COOKIE.sent');
-            $f3->clear('SESSION.captcha');
-            $f3->set('SESSION.admin_id', 'admin');
+            $f3->set('SESSION.admin_id', $admin_id);
             $f3->set('SESSION.lastseen', time());
             $f3->reroute('/admins');
         } else {
@@ -56,4 +61,6 @@ class HomeController extends BaseController {
         // 重定向到登录页面
         $f3->reroute('/admins/login');
     }
+
+
 }
