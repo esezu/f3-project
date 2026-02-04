@@ -1,6 +1,7 @@
 f3-cms-main/
 fatfree-core-master/
 vendor/
+tmp/
 composer.lock
 *.log
 .DS_Store
