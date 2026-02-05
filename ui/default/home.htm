@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3.9.2 模板示例</title>
+</head>
+<body>
+    <h1>用户信息</h1>
+    <p>用户名：{{ @user.username }}</p>
+    <p>年龄：{{ @user.age }}</p>
+
+    <check if="{{ @user.age >= 18 }}">
+        <true><span style="color: green;">✅ 成年</span></true>
+        <false><span style="color: red;">❌ 未成年</span></false>
+    </check>
+
+
+    <h2>邮箱验证：</h2>
+    <check if="{{ @user.email }}">
+        <true><span style="color: green;">✅ 邮箱有效</span></true>
+        <false><span style="color: red;">❌ 邮箱无效</span></false>
+    </check>
+
+    <F3:check if="{{ @user.email =='tsest@example.com' }}">
+        <true><span style="color: green;">✅ 邮箱有效</span></true>
+        <false><span style="color: red;">❌ 邮箱无效</span></false>
+    </F3:check>
+
+    <h2>水果列表：</h2>
+    <!-- 循环（官方标准） -->
+    <repeat group="{{ @fruits }}" value="{{ @fruit }}">
+        <p>{{ trim(@fruit) }}</p>
+    </repeat>
+</body>
+</html>
